@@ -18,29 +18,6 @@
         ]]>
 	</select>
 
-	<insert id="insertBoard" parameterType="hashmap">
-    <![CDATA[
-        INSERT INTO TB_BOARD
-        (
-            TITLE,
-            CONTENTS,
-            HIT_CNT,
-            DEL_GB,
-            CREA_DTM,
-            CREA_ID
-        )
-        VALUES
-        (
-            #{TITLE},
-            #{CONTENTS},
-            0,
-            'N',
-            '20170524',
-            'Admin'
-        )
-    ]]>
-	</insert>
-
 	<select id="selectBoardDetail" parameterType="hashmap"
 		resultType="hashmap">
     <![CDATA[
@@ -78,5 +55,55 @@
             IDX = #{IDX}
     ]]>
 	</update>
+
+	<insert id="insertFile" parameterType="hashmap">
+    <![CDATA[
+        INSERT INTO TB_FILE
+        (
+            IDX,
+            BOARD_IDX,
+            ORIGINAL_FILE_NAME,
+            STORED_FILE_NAME,
+            FILE_SIZE,
+            CREA_ID
+        )
+        VALUES
+        (
+            1,
+            1,
+            #{ORIGINAL_FILE_NAME},
+            #{STORED_FILE_NAME},
+            #{FILE_SIZE},
+            'Admin'
+        )
+    ]]>
+	</insert>
+
+
+	<insert id="insertBoard" parameterType="hashmap">
+    <![CDATA[
+         
+        INSERT INTO TB_BOARD
+        (
+            IDX,
+            TITLE,
+            CONTENTS,
+            HIT_CNT,
+            DEL_GB,
+            CREA_DTM,
+            CREA_ID
+        )
+        VALUES
+        (
+            8.0,
+            #{TITLE},
+            #{CONTENTS},
+            0,
+            'N',
+            20170524,
+            'Admin'
+        )
+    ]]>
+	</insert>
 
 </mapper>
